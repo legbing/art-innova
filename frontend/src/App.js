@@ -1,22 +1,25 @@
 import React from "react";
-import Form from "./login_signup";
 import{
     BrowserRouter as Router,
     Route,
     Routes
   }from "react-router-dom";
+import Form from "./login_signup";
+import Artists from "./artist_page";
+
 import Home from "./home";
 class App extends React.Component{
     render(){
     return(
     <Router>
         <Routes>
-            <Route  path="/home" element={<Home/>}></Route>
+            <Route path="/home" element={<Home/>}></Route>
+            <Route path="/artist/home" element={<Artists/>}></Route>
             <Route path="/" element={<Form/>}></Route>
         </Routes>
     </Router>
-    
+
     )
-    }
+}
 };
 export default App;
