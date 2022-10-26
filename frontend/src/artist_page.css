@@ -23,8 +23,8 @@
 
   background: #FFFFFF;
   border: 2px solid #000000;
-  display: flex;
-
+  display: inline-block;
+  float: left;
 }
 
 .plus-img {
@@ -32,4 +32,7 @@
   width: 190px;
 
   margin: auto;
+}
+.pic {
+  overflow: hidden;
 }

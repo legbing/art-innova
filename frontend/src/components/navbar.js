@@ -7,7 +7,8 @@ class Navbar extends React.Component{
                     left: 0,
                     top: 0,
                     padding: 10,
-                    display: 'flex'
+                    display: 'flex',
+                    boxSizing: 'border-box'
                 };
                 var linkStyle = {
                     margin: 10,
@@ -22,24 +23,25 @@ class Navbar extends React.Component{
                 };
                 var div2Style = {
                     display: 'inline-block',
-                    width: '50%',
-                    marginLeft: '45%'
+
+                    marginLeft: 'auto',
+                    paddingTop: 20
                 }
                 var div1Style = {
                     display: 'flex',
-                    width: '50%'
-
+                    
                 }
                 var hstyle = {
-                    fontFamily: 'inter',
+                    fontFamily: 'comicsans',
                     fontStyle: 'italic',
-                    marginLeft: '20px'
+                    marginLeft: '20px',
+                    fontSize: '20px'
                 }
                 return(
                     <header style={headStyle}>
                         <div style={div1Style}>
 
-                            <h2 style={hstyle}>Art Innova</h2>
+                            <p style={hstyle}>Art Innova</p>
                         </div>
 
                         <div style={div2Style}>
