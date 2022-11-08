@@ -1,0 +1,20 @@
+.show {
+  display: "block";
+  transition: "800ms";
+  opacity: 1;
+
+  z-index: 10; 
+}
+
+.show.outer {
+  transform: translateY(100px) scale(0) rotateY(180deg);
+  opacity: 0;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}

@@ -1,17 +1,21 @@
 import React from 'react';
+import Modal from '@material-ui/core/Modal';
 import Navbar from './components/navbar';
 import Art from './components/art';
 import "./artist_page.css"
 import plus from './assets/plus_symbol.png'
 import pic from './assets/monalisa.jpg';
+import ad from './assets/art-exhib.png';
+import GalleryAd from './components/gallery-ad';
+import Upload from './components/popup';
 
 function Artists() {
   var divStyle = {
     position: 'relative',
     left: 10,
     top: 0,
-    padding: 20,
-    marginLeft: 20,
+
+
     display: 'flex',
     flexDirection: 'column'
   }
@@ -21,20 +25,45 @@ function Artists() {
     paddingLeft: 50,
     justifyContent: 'center'
   }
+
+
+
+  const [isshow1, setShow1] = React.useState(false);
+  const handlePopup1Open = () => {
+    setShow1((isshow1) => !isshow1)
+  }
+
+  const [isshow2, setShow2] = React.useState(false);
+  const handlePopup2Open = () => {
+    setShow2((isshow2) => !isshow2)
+  }
+
+  const handleClick = () => {
+    handlePopup1Open()
+  }
+
     return (
 
-        <div>
+        <div className={!isshow1 ? "overlay" : "stylebody"}>
             <Navbar />
             <div style={divStyle}>
                 <h1 className='heading-1'>Your Art Works</h1>
                 <div className='pics'>
-                  <div className='rectangle'>
-                    <a href="/upload"><img src={plus} className = 'plus-img'/></a>
+                  <div className='rectangle' onClick={handleClick}>
+                    <img src={plus} className = 'plus-img'/>
+                    <Upload isshow1={isshow1}/>
                   </div>
 
-                  <div style={divpic}><Art image={pic} name="Mona Lisa" desc = "Leonardo DaVinci" /></div>
+                  <div style={divpic}><Art image={pic} name="Mona Lisa" desc = "Leonardo DaVinci" handlePopup2Open={handlePopup2Open} isshow2={isshow2}/></div>
                 </div>
+
             </div>
+
+            <div className='divStyle2'>
+                <h1 className='heading-2'>Your upcoming displays</h1>
+                <GalleryAd img={ad} />
+            </div>
+
         </div>
     );
 }
