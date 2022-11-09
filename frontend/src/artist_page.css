@@ -17,7 +17,8 @@
 }
 
 .stylebody {
-  margin: 20
+  margin: 20;
+
 }
 
 .rectangle {
@@ -53,7 +54,7 @@
 }
 
 .overlay {
-    position: fixed;
+
     top: 0;
     left: 0;
     width: 100vw;

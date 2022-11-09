@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import ReactSerializer
-from .models import React
+from .serializers import ReactSerializer, ArtSerializer
+from .models import React, Work
 # Create your views here.
 @api_view(['GET', 'POST'])
 def form(request):
@@ -12,7 +12,7 @@ def form(request):
         detail = React.objects.all()
         serializer = ReactSerializer(detail, many=True)
         return Response(serializer.data)
-    
+
 
     elif request.method == 'POST':
         serializer = ReactSerializer(data=request.data)
@@ -29,3 +29,18 @@ def form_login(request):
         if React.objects.filter(email=request.data['email'],password=request.data['password']).exists():
             return Response(status=200)
         return Response(status=404)
+
+@api_view(['GET', 'POST'])
+def upload_art(request):
+    if request.method == 'POST':
+        serializer = ArtSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status = status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == "GET":
+        data = Work.objects.all()
+        serializer =ArtSerializer(data, context={'request': request}, many=True)
+        return Response(serializer.data)

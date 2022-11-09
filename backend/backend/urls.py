@@ -21,5 +21,6 @@ from core.views import form_login
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("form/", form, name="form"),
-    path("form_login/",form_login,name="form_login")
+    path("form_login/",form_login,name="form_login"),
+    path("upload_art/", upload_art, name="upload_art")
 ]

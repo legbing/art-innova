@@ -28,12 +28,12 @@ function Artists() {
 
 
 
-  const [isshow1, setShow1] = React.useState(false);
+  const [isshow1, setShow1, isshow2, setShow2] = React.useState(false);
   const handlePopup1Open = () => {
     setShow1((isshow1) => !isshow1)
   }
 
-  const [isshow2, setShow2] = React.useState(false);
+  //const [isshow2, setShow2] = React.useState(false);
   const handlePopup2Open = () => {
     setShow2((isshow2) => !isshow2)
   }
@@ -43,27 +43,27 @@ function Artists() {
   }
 
     return (
-
-        <div className={!isshow1 ? "overlay" : "stylebody"}>
+        <div className="stylebody">
+        <div className={!isshow1 ? "stylebody" : "overlay"}>
             <Navbar />
             <div style={divStyle}>
                 <h1 className='heading-1'>Your Art Works</h1>
                 <div className='pics'>
-                  <div className='rectangle' onClick={handleClick}>
+                  <div className='rectangle' onClick={handlePopup1Open}>
                     <img src={plus} className = 'plus-img'/>
-                    <Upload isshow1={isshow1}/>
+
                   </div>
 
                   <div style={divpic}><Art image={pic} name="Mona Lisa" desc = "Leonardo DaVinci" handlePopup2Open={handlePopup2Open} isshow2={isshow2}/></div>
                 </div>
-
+                <Upload isshow1={isshow1}/>
             </div>
 
             <div className='divStyle2'>
                 <h1 className='heading-2'>Your upcoming displays</h1>
                 <GalleryAd img={ad} />
             </div>
-
+            </div>
         </div>
     );
 }

@@ -8,6 +8,7 @@ function Upload({isshow1}) {
   return (
     <div className={`${!isshow1 ? "outer": ""} show`}>
     <div className="form">
+    <div className="form-box solid">
       <form>
         <label>Title: </label><br/><br/>
         <input
@@ -21,6 +22,7 @@ function Upload({isshow1}) {
       <input type="file" name="art" />
       <img id="myart" src="#" alt="My image" />
       <input type="submit"/>
+    </div>
     </div>
     </div>
   )
