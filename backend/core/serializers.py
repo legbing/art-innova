@@ -9,4 +9,4 @@ class ReactSerializer(serializers.ModelSerializer):
 class ArtSerializer(serializers.ModelSerializer):
     class Meta:
         model = Work
-        fields = ['title', 'author', 'pic']
+        fields = '__all__'

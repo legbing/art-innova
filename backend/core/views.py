@@ -4,10 +4,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import ReactSerializer, ArtSerializer
 from .models import React, Work
+import json
 # Create your views here.
 @api_view(['GET', 'POST'])
 def form(request):
-
+    print(request.data)
     if request.method == 'GET':
         detail = React.objects.all()
         serializer = ReactSerializer(detail, many=True)
@@ -32,15 +33,23 @@ def form_login(request):
 
 @api_view(['GET', 'POST'])
 def upload_art(request):
+    print(request.data)
     if request.method == 'POST':
-        serializer = ArtSerializer(data = request.data)
+        print(request.data.get("title"))
+        print(request.data.get("author"))
+        print(request.data.get("pic"))
+        serializer = ArtSerializer(data = {'title':request.data.get('title'), 'author':request.data.get('author'),
+                    'pic':request.data.get('pic')})
+
         if serializer.is_valid():
             serializer.save()
             return Response(status = status.HTTP_201_CREATED)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            print('error', serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == "GET":
         data = Work.objects.all()
         serializer =ArtSerializer(data, context={'request': request}, many=True)
+        #print("Data: ",serializer.data)
         return Response(serializer.data)

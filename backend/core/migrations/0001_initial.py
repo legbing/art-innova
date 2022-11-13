@@ -21,4 +21,5 @@ class Migration(migrations.Migration):
                 ('usertype', models.CharField(max_length=100)),
             ],
         ),
+
     ]

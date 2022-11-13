@@ -6,8 +6,14 @@ function Art(props) {
   const handleClick = () => {
     props.handlePopup2Open()
   }
+  var divpic = {
+    display: 'inline-block',
+    height: 50,
+    paddingLeft: 50,
+    justifyContent: 'center'
+  }
   return (
-    <div>
+    <div style={divpic}>
       <img src={props.image} onClick={handleClick} />
       <p><b>{props.name}</b></p>
       <p><em>{props.desc}</em></p>

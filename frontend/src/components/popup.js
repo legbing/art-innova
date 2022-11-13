@@ -9,9 +9,10 @@ function Upload({isshow1}) {
 
   console.log(isshow1);
   const [file, setFile] = useState();
+  const [file_disp, setFileDisp] = useState();
   function handleChange(e) {
       console.log(e.target.files);
-      //setFile(URL.createObjectURL(e.target.files[0]));
+      setFileDisp(URL.createObjectURL(e.target.files[0]));
       setFile(e.target.files[0]);
       //<label style={{color:"white"}}>Remove Art: </label><br/>
       //<button onClick={removeimg}>remove</button><br/><br/>
@@ -71,7 +72,7 @@ function removeimg(e){
       <input type="submit"  style={{width:"100px"}}/>
       </div>
       <div style={{width:"250px",height:"250px",backgroundColor:"white",display:"flex",justifyContent:"center"}}>
-      <div ><img id="myart" src={file}  width="100%" height="100%" alt="upload your artwork!" /></div><br/><br/>
+      <div ><img id="myart" src={file_disp}  width="100%" height="100%" alt="upload your artwork!" /></div><br/><br/>
       </div>
       </form>
     </div>
