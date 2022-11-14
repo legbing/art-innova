@@ -28,7 +28,9 @@ def form_login(request):
         #serializer = ReactSerializer(data=request.data)
         print(request.data)
         if React.objects.filter(email=request.data['email'],password=request.data['password']).exists():
-            return Response(status=200)
+            obj = React.objects.filter(email=request.data['email']).first()
+
+            return Response(data=[obj.name, obj.usertype], status=200)
         return Response(status=404)
 
 @api_view(['GET', 'POST'])
@@ -53,3 +55,11 @@ def upload_art(request):
         serializer =ArtSerializer(data, context={'request': request}, many=True)
         #print("Data: ",serializer.data)
         return Response(serializer.data)
+
+@api_view(['GET'])
+def get_artist_art(request, user):
+
+    data = Work.objects.filter(author = user)
+    serializer =ArtSerializer(data, context={'request': request}, many=True)
+    #print("Data: ",serializer.data)
+    return Response(serializer.data)

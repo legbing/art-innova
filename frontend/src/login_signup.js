@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Form() {
   let [authMode, setAuthMode] = useState("signin")
+  //let [user, setUser] = useState("")
 
   const changeAuthMode = () => {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
   }
-
+  const navigate = useNavigate();
   const login = (e) =>{
     const mail=e.target.email.value;
     const pass=e.target.password.value;
@@ -21,6 +23,17 @@ function Form() {
    ).then((response)=>{
      console.log(response)
      alert('user logged in succesfully!')
+     //setUser((user) => response.data[0])
+     const user = response.data[0];
+     console.log(user);
+     if(response.data[1] == "artist")
+     {
+       navigate('/artist/home', {state:{user}})
+     }
+     else if (response.data[1] == "customer") {
+       navigate('/home', {state:{user}})
+
+     }
    }).catch((err)=>{
     console.log(err)
    }

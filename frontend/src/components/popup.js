@@ -4,10 +4,11 @@ import './popup_style.css';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import close from '../assets/close.png';
 
 function Upload({isshow1}) {
 
-  console.log(isshow1);
+  //console.log(isshow1);
   const [file, setFile] = useState();
   const [file_disp, setFileDisp] = useState();
   function handleChange(e) {
@@ -75,6 +76,7 @@ function removeimg(e){
       <div ><img id="myart" src={file_disp}  width="100%" height="100%" alt="upload your artwork!" /></div><br/><br/>
       </div>
       </form>
+
     </div>
     </div>
     </div>

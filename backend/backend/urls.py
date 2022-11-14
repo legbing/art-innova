@@ -18,6 +18,7 @@ from django.urls import path
 from core.views import form
 from core.views import form_login
 from core.views import upload_art
+from core.views import get_artist_art
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,5 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("form/", form, name="form"),
     path("form_login/",form_login,name="form_login"),
-    path("upload_art/", upload_art, name="upload_art")
+    path("upload_art/", upload_art, name="upload_art"),
+    path("get_artist_art/<user>/", get_artist_art, name="get_artist_art")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

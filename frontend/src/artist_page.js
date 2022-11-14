@@ -9,6 +9,7 @@ import ad from './assets/art-exhib.png';
 import GalleryAd from './components/gallery-ad';
 import Upload from './components/popup';
 import axios from 'axios';
+import {useNavigate, useLocation, useParams} from 'react-router-dom';
 //import GetDeets from './components/deets';
 
 function Artists() {
@@ -28,7 +29,14 @@ function Artists() {
     justifyContent: 'center'
   }
 
-
+  const location = useLocation()
+  const navigate = useNavigate()
+  const [currentuser, setCurrentuser] = useState('')
+  //const user = location.state.user
+  //localStorage.setItem('user', user)
+  //const history = useHistory();
+  console.log("User: ", location.state.user);
+  //setCurrentuser((currentuser)=>location.state.user);
 
   const [isshow1, setShow1, isshow2, setShow2] = React.useState(false);
   const [items, setItems] = useState([]);
@@ -47,18 +55,21 @@ function Artists() {
   }
 
   useEffect(() => {
-   fetchItems();
- }, []);
+    setCurrentuser((currentuser)=>location.state.user);
+    console.log("Cur user: ", currentuser);
+   fetchItems(currentuser);
+ }, [location]);
 
  const requestOptions = {
    method: "GET",
    headers: { "Content-Type": "application/json"},
  };
 
- const fetchItems = async () => {
+ const fetchItems = async (currentuser) => {
 
   axios.get(
-      "http://localhost:8000/upload_art/"
+      `http://localhost:8000/get_artist_art/${location.state.user}`
+
      ).then((response)=>{
        //console.log(response.data)
        //console.log(response.status)
