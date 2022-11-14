@@ -1,0 +1,77 @@
+.heading-1, .heading-2 {
+
+    font-weight: 20;
+    font-size: 40px;
+    line-height: 56px;
+    float: left;
+    width: 100%;
+    /* identical to box height, or 108% */
+}
+
+.div-1 {
+
+  left: 0;
+  top: 0;
+  padding: 10;
+  display: 'flex';
+}
+
+.stylebody {
+  margin: 20;
+
+}
+
+.rectangle {
+  position:relative;
+  width: 197px;
+  height: 200px;
+  box-sizing: border-box;
+
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  display: inline-block;
+  float: left;
+}
+
+.plus-img {
+  height: 200px;
+  width: 190px;
+
+  margin: auto;
+}
+.pics {
+  overflow: hidden;
+}
+
+.search{
+    display:flex;
+    float:center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.distance{
+    display:flex;
+    float:center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.search input{
+    margin-top: 20 px;
+    width: 300 px;
+    height:400 px;
+    font-size:20 px;
+    padding-left: 10 px;
+}
+
+
+.overlay {
+
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(111,111,111,0.5);
+    z-index: 9;
+}
