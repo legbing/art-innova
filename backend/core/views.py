@@ -2,9 +2,10 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import ReactSerializer, ArtSerializer
-from .models import React, Work
+from .serializers import ReactSerializer, ArtSerializer, EventSerializer
+from .models import React, Work, Event
 import json
+import re
 # Create your views here.
 @api_view(['GET', 'POST'])
 def form(request):
@@ -61,5 +62,36 @@ def get_artist_art(request, user):
 
     data = Work.objects.filter(author = user)
     serializer =ArtSerializer(data, context={'request': request}, many=True)
+    #print("Data: ",serializer.data)
+    return Response(serializer.data)
+
+@api_view(['GET', 'POST'])
+def add_event(request):
+    print(request.data)
+    if request.method == 'POST':
+
+        serializer = EventSerializer(data = {'exhibit':request.data.get('exhibit'), 'gallery':request.data.get('gallery'),
+                    'ad':request.data.get('ad'), 'theme':request.data.get('theme'), 'artists':request.data.get('artists')})
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status = status.HTTP_201_CREATED)
+        else:
+            print('error', serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == "GET":
+        data = Event.objects.all()
+        serializer =EventSerializer(data, context={'request': request}, many=True)
+        #print("Data: ",serializer.data)
+        return Response(serializer.data)
+
+@api_view(['GET'])
+def get_event(request, gallery):
+
+    data = Event.objects.filter(gallery = gallery)
+
+    serializer =EventSerializer(data, context={'request': request}, many=True)
+    print(serializer.data)
     #print("Data: ",serializer.data)
     return Response(serializer.data)

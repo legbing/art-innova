@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import close from '../assets/close.png';
 
-function Upload({isshow1}) {
+function Upload({isshow1, user}) {
 
   //console.log(isshow1);
   const [file, setFile] = useState();
@@ -34,6 +34,7 @@ function removeimg(e){
     //const title=e.target.title.value;
     //const artist=e.target.artist.value;
     //const art = e.target.art.value;
+    e.preventDefault();
     const formData = new FormData();
     const config = {
       headers: { 'content-type': 'multipart/form-data' }
@@ -50,11 +51,11 @@ function removeimg(e){
      ).then((response)=>{
        console.log(response)
        alert('Art work uploaded successfully')
-       navigate("/artist/home")
+       navigate("/artist/home", {state:{user}})
      }).catch((err)=>{
       console.log("Nooo")
      })
-    e.preventDefault();
+
   }
 
   return (

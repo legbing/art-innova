@@ -35,7 +35,7 @@ function Artists() {
   //const user = location.state.user
   //localStorage.setItem('user', user)
   //const history = useHistory();
-  console.log("User: ", location.state.user);
+  //console.log("User: ", location.state.user);
   //setCurrentuser((currentuser)=>location.state.user);
 
   const [isshow1, setShow1, isshow2, setShow2] = React.useState(false);
@@ -95,6 +95,7 @@ function Artists() {
         <div className="stylebody">
         <div className={!isshow1 ? "stylebody" : "overlay"}>
             <Navbar />
+            
             <div style={divStyle}>
                 <h1 className='heading-1'>Your Art Works</h1>
                 <div className='pics'>
@@ -108,7 +109,7 @@ function Artists() {
                   {listArt}
                   <Art image={pic} name="Mona Lisa" desc = "Leonardo DaVinci" handlePopup2Open={handlePopup2Open} isshow2={isshow2}/></div>
                 </div>
-                <Upload isshow1={isshow1}/>
+                <Upload isshow1={isshow1} user={location.state.user}/>
             </div>
 
             <div className='divStyle2'>

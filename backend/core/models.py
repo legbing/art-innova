@@ -16,3 +16,10 @@ class Work(models.Model):
 
     def __str__(self):
         return self.title
+
+class Event(models.Model):
+    exhibit = models.CharField(max_length=200)
+    gallery = models.CharField(max_length=200)
+    theme = models.CharField(max_length=200)
+    ad = models.ImageField(upload_to='events/')
+    artists = models.JSONField()

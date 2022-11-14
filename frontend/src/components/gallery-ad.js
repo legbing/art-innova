@@ -15,6 +15,7 @@ function GalleryAd(props) {
   return (
       <div style = {adStyle}>
         <img src={props.img} style={imgStyle} />
+        <p><b>{props.name}</b></p>
       </div>
   )
 }

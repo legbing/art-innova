@@ -10,3 +10,8 @@ class ArtSerializer(serializers.ModelSerializer):
     class Meta:
         model = Work
         fields = '__all__'
+
+class EventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
+        fields = '__all__'

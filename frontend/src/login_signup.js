@@ -31,9 +31,11 @@ function Form() {
        navigate('/artist/home', {state:{user}})
      }
      else if (response.data[1] == "customer") {
-       navigate('/home', {state:{user}})
+       navigate('/home', {state:{user}})}
+    else if (response.data[1] == "Gallery owner") {
+        navigate('/gallery', {state:{user}})
+    }
 
-     }
    }).catch((err)=>{
     console.log(err)
    }
