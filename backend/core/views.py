@@ -41,7 +41,7 @@ def upload_art(request):
         print(request.data.get("author"))
         print(request.data.get("pic"))
         serializer = ArtSerializer(data = {'title':request.data.get('title'), 'author':request.data.get('author'),
-                    'pic':request.data.get('pic')})
+                    'pic':request.data.get('pic'), 'description':request.data.get('description'), 'cost':request.data.get('cost')})
 
         if serializer.is_valid():
             serializer.save()

@@ -11,6 +11,8 @@ class Work(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
     pic = models.ImageField(upload_to='images/')
+    description = models.TextField(null=True)
+    cost = models.FloatField(default=0.00)
 
     def __str__(self):
         return self.title

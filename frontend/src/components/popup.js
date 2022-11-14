@@ -26,6 +26,8 @@ function removeimg(e){
 
   const [title, setTitle] = useState("")
   const [artist, setArtist] = useState("")
+  const [description, setDescription] = useState("")
+  const [cost, setCost] = useState("")
   const navigate = useNavigate();
   //console.log(isshow1);
   const up_art = (e) =>{
@@ -40,6 +42,8 @@ function removeimg(e){
     formData.append("title", title);
     formData.append("author", artist);
     formData.append('pic', file);
+    formData.append('description', description);
+    formData.append('cost', cost);
     console.log(formData);
   axios.post(
       "http://localhost:8000/upload_art/",formData
@@ -66,6 +70,10 @@ function removeimg(e){
 
       <label style={{color:"white"}}>Artist Name: </label><br/>
       <input type="text" name="artist" onChange={e => setArtist(e.target.value)}/><br/><br/>
+      <label style={{color:"white"}}>Enter a description: </label><br/>
+      <textarea name="description" onChange={e => setDescription(e.target.value)}/><br/><br/>
+      <label style={{color:"white"}}>Enter the price: </label><br/>
+      <input name="cost" type="number" step="0.01" onChange={e => setCost(e.target.value)}/><br/><br/>
       <label style={{color:"white"}}>Upload your work: </label><br/>
       <input type="file" name="art" onChange={handleChange} filename={file}
 
