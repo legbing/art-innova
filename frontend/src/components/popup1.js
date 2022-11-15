@@ -10,6 +10,8 @@ function Upload({isshow1, user}) {
   const [exhibit, setExhibit] = useState("")
   const [gallery, setGallery] = useState("")
   const [theme, setTheme] = useState("")
+  const [date, setDate] = useState(new Date())
+  const [time, setTime] = useState("")
   const [file, setFile] = useState();
   const [file_disp, setFileDisp] = useState();
   const navigate = useNavigate();
@@ -49,7 +51,7 @@ function Upload({isshow1, user}) {
 
     const index = e.target.id;
     let newArr = [...arr];
-    newArr[index].value = e.target.value;
+    newArr[index] = e.target.value;
     setArr(newArr);
     //setArr(s => {
       //const newArr = s.slice();
@@ -71,8 +73,8 @@ function Upload({isshow1, user}) {
 
     formData.append('exhibit', exhibit);
     formData.append('gallery', gallery);
-    //formData.append('date', date);
-    //formData.append('time', time);
+    formData.append('date', date);
+    formData.append('time', time);
     formData.append('theme', theme);
     formData.append('artists', arr);
     formData.append('ad', file);
@@ -111,6 +113,10 @@ function Upload({isshow1, user}) {
       <input type="text" name="name" onChange={e => setGallery(e.target.value)}/><br></br>
       <br></br><label style={{color:"white"}}>Gallery theme: </label><br/>
       <input type="text" name="theme" onChange={e => setTheme(e.target.value)}/><br></br>
+      <br></br><label style={{color:"white"}}>Date of event: </label><br/>
+      <input type="date" name="date" onChange={e => setDate(e.target.value)}/><br></br>
+      <br></br><label style={{color:"white"}}>Time of event: </label><br/>
+      <input type="time" name="time" onChange={e => setTime(e.target.value)}/><br></br>
 
       <br></br><label style={{color:"white"}}>Upload the poster: </label>
       <input type="file" name="art" onChange={handleChange} filename={file}

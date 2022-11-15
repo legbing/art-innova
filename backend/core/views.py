@@ -71,7 +71,8 @@ def add_event(request):
     if request.method == 'POST':
 
         serializer = EventSerializer(data = {'exhibit':request.data.get('exhibit'), 'gallery':request.data.get('gallery'),
-                    'ad':request.data.get('ad'), 'theme':request.data.get('theme'), 'artists':request.data.get('artists')})
+                    'ad':request.data.get('ad'), 'theme':request.data.get('theme'), 'artists':request.data.get('artists'),
+                    'date':request.data.get('date'), 'time':request.data.get('time')})
 
         if serializer.is_valid():
             serializer.save()

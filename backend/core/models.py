@@ -1,6 +1,6 @@
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
-
+from datetime import date
 
 # Create your models here.
 class React(models.Model):
@@ -25,3 +25,5 @@ class Event(models.Model):
     theme = models.CharField(max_length=200)
     ad = models.ImageField(upload_to='events/')
     artists = models.JSONField()
+    date = models.DateField(default=date.today)
+    time = models.CharField(max_length=200,null=True)
