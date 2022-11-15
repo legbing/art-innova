@@ -49,7 +49,7 @@ function Upload({isshow1, user}) {
 
     const index = e.target.id;
     let newArr = [...arr];
-    newArr[index] = e.target.value;
+    newArr[index].value = e.target.value;
     setArr(newArr);
     //setArr(s => {
       //const newArr = s.slice();
@@ -71,6 +71,8 @@ function Upload({isshow1, user}) {
 
     formData.append('exhibit', exhibit);
     formData.append('gallery', gallery);
+    //formData.append('date', date);
+    //formData.append('time', time);
     formData.append('theme', theme);
     formData.append('artists', arr);
     formData.append('ad', file);
@@ -79,7 +81,7 @@ function Upload({isshow1, user}) {
       "http://localhost:8000/add_event/",formData
      ).then((response)=>{
        console.log(response)
-       alert('Art work uploaded successfully')
+       alert('Gallery event uploaded successfully')
        navigate("/gallery", {state:{user}})
      }).catch((err)=>{
       console.log("Nooo")

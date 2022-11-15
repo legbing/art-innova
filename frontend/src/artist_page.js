@@ -40,7 +40,9 @@ function Artists() {
 
   const [isshow1, setShow1, isshow2, setShow2] = React.useState(false);
   const [items, setItems] = useState([]);
-  const [status, setStatus] = useState(0);
+  const [events, setEvents] = useState([]);
+  const [status1, setStatus1] = useState(0);
+  const [status2, setStatus2] = useState(0);
   const handlePopup1Open = () => {
     setShow1((isshow1) => !isshow1)
   }
@@ -77,25 +79,47 @@ function Artists() {
 
        setItems(items);
        console.log(items);
-       setStatus(response.status);
+       setStatus1(response.status);
 
 
      }).catch((err)=>{
       console.log("Nooo")
     })
+
+    axios.get(
+        `http://localhost:8000/get_event_by_artist/${location.state.user}`
+
+       ).then((response)=>{
+         //console.log(response.data)
+         //console.log(response.status)
+         const events = response.data;
+
+         setEvents(events);
+         console.log(events);
+         setStatus2(response.status);
+
+
+       }).catch((err)=>{
+        console.log("Nooo")
+      })
   };
 
-  if(status == 200) {
+  if(status1 == 200 && status2 == 200) {
     const listArt = items.map((item, index) =>
 
         <Art key={index} image={item.pic} name={item.title} desc = {item.author} handlePopup2Open={handlePopup2Open} isshow2={isshow2}/>
+
+    );
+    const listEvent = events.map((item, index) =>
+
+        <GalleryAd key={index} img={item.ad} name={item.exhibit}/>
 
     );
     return (
         <div className="stylebody">
         <div className={!isshow1 ? "stylebody" : "overlay"}>
             <Navbar />
-            
+
             <div style={divStyle}>
                 <h1 className='heading-1'>Your Art Works</h1>
                 <div className='pics'>
@@ -113,8 +137,13 @@ function Artists() {
             </div>
 
             <div className='divStyle2'>
+            <div className="pics">
                 <h1 className='heading-2'>Your upcoming displays</h1>
+                <div style={divpic}>
                 <GalleryAd img={ad} />
+                {listEvent}
+                </div>
+                </div>
             </div>
             </div>
         </div>

@@ -95,3 +95,25 @@ def get_event(request, gallery):
     print(serializer.data)
     #print("Data: ",serializer.data)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def get_event_by_artist(request, artist):
+
+    data = Event.objects.values_list('artists', flat=True)
+    data1 = Event.objects.none()
+    for m in range(len(data)):
+        artists = data[m].strip(',').split(',')
+        id = -1
+        for i in artists:
+            if(i == artist):
+                id = m+1
+                print(id)
+                break
+        if(id != -1):
+            data1 |= Event.objects.filter(id = id)
+
+    serializer =EventSerializer(data1, context={'request': request}, many=True)
+    #print("Artists: ", serializervalues_list('eng_name', flat=True))
+    #print(serializer.data)
+    #print("Data: ",serializer.data)
+    return Response(serializer.data)

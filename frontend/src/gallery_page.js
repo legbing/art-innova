@@ -146,7 +146,7 @@ function Gallery() {
                 </div>
 
 
-                <Upload isshow1={isshow1}/>
+                <Upload isshow1={isshow1} user={location.state.user}/>
             </div>
 
 
