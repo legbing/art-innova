@@ -1,64 +1,65 @@
 .heading-1, .heading-2 {
 
-    font-weight: 20;
-    font-size: 40px;
-    line-height: 56px;
-    float: left;
-    width: 100%;
-    /* identical to box height, or 108% */
+  font-weight: 20;
+  font-size: 40px;
+  line-height: 56px;
+  float: left;
+  width: 100%;
+  /* identical to box height, or 108% */
 }
 
 .div-1 {
 
-  left: 0;
-  top: 0;
-  padding: 10;
-  display: 'flex';
+left: 0;
+top: 0;
+padding: 10;
+display: 'flex';
 }
 
 .stylebody {
-  margin: 20;
+margin: 20;
 
 }
 
 .rectangle {
-  position:relative;
-  width: 197px;
-  height: 200px;
-  box-sizing: border-box;
+position:absolute;
+width: 160px;
+height: 120px;
+box-sizing: border-box;
 
-  background: #FFFFFF;
-  border: 2px solid #000000;
-  display: inline-block;
-  float: left;
+background: #FFFFFF;
+border: 2px solid #000000;
+display: inline-block;
 }
 
 .plus-img {
-  height: 200px;
-  width: 190px;
+height: 110px;
+width: 160px;
 
-  margin: auto;
+margin: auto;
 }
 .pics {
-  overflow: hidden;
+overflow: hidden;
 }
 
 .divStyle2 {
-  position: 'relative';
-  left: 30;
-  padding: 20;
-  margin-left: 30;
-  display: 'flex';
-  flex-direction: 'column';
+position: 'relative';
+left: 30;
+padding: 20;
+margin-left: 30;
+display: 'flex';
+flex-direction: 'column';
 
 }
 
 .overlay {
 
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgb(111,111,111,0.5);
-    z-index: 9;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(81, 70, 70, 0.5);
+  z-index: 9;
+  filter: blur(8px);
 }
+/*rgba(102, 119, 121, 0.5)*/
