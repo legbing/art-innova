@@ -21,6 +21,7 @@ from core.views import upload_art
 from core.views import get_artist_art
 from core.views import add_event
 from core.views import get_event
+from core.views import get_artwork_desc,delete_art
 from core.views import get_event_by_artist
 from django.conf import settings
 from django.conf.urls.static import static
@@ -33,5 +34,8 @@ urlpatterns = [
     path("get_artist_art/<user>/", get_artist_art, name="get_artist_art"),
     path("add_event/", add_event, name="add_event"),
     path("get_event/<gallery>/", get_event, name="get_event"),
-    path("get_event_by_artist/<artist>/", get_event_by_artist, name="get_event_by_artist")
+    path("get_event_by_artist/<artist>/", get_event_by_artist, name="get_event_by_artist"),
+    path("get_artwork_desc/<user>/<title>/",get_artwork_desc,name="get_artwork_desc"),
+    path("delete_art/<user>/<title>/",delete_art,name="delete_art")
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
