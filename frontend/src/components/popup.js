@@ -1,14 +1,14 @@
+
 import React from 'react';
-import Popup from 'reactjs-popup';
+//import Popup from 'reactjs-popup';
 import './popup_style.css';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import close from '../assets/close.png';
 
-function Upload({isshow1, user}) {
+function Upload({isshow1,user}) {
 
-  //console.log(isshow1);
+  console.log(isshow1);
   const [file, setFile] = useState();
   const [file_disp, setFileDisp] = useState();
   function handleChange(e) {
@@ -51,11 +51,13 @@ function removeimg(e){
      ).then((response)=>{
        console.log(response)
        alert('Art work uploaded successfully')
-       navigate("/artist/home", {state:{user}})
+       //e.preventDefault();
+       navigate("/artist/home",{state:{user}})
      }).catch((err)=>{
       console.log("Nooo")
      })
-
+     e.preventDefault();
+   
   }
 
   return (
@@ -78,14 +80,13 @@ function removeimg(e){
       <label style={{color:"white"}}>Upload your work: </label><br/>
       <input type="file" name="art" onChange={handleChange} filename={file}
 
-      accept="image/*"></input>/><br/><br/>
+      accept="image/*"></input><br/><br/>
       <input type="submit"  style={{width:"100px"}}/>
       </div>
       <div style={{width:"250px",height:"250px",backgroundColor:"white",display:"flex",justifyContent:"center"}}>
       <div ><img id="myart" src={file_disp}  width="100%" height="100%" alt="upload your artwork!" /></div><br/><br/>
       </div>
       </form>
-
     </div>
     </div>
     </div>

@@ -35,7 +35,7 @@ class Navbar extends React.Component{
                     fontFamily: 'comicsans',
                     fontStyle: 'italic',
                     marginLeft: '20px',
-                    fontSize: '20px'
+                    fontSize: '30px'
                 }
                 return(
                     <header style={headStyle}>
@@ -45,10 +45,10 @@ class Navbar extends React.Component{
                         </div>
 
                         <div style={div2Style}>
-                            <a href="/artist/paintings" style={linkStyle}>PAINTINGS</a>
-                            <a href="/artist/drwaings" style={linkStyle}>DRAWINGS</a>
-                            <a href="/artist/sculptures" style={linkStyle}>SCULPTURES</a>
-                            <a href="/artist/galleries" style={linkStyle}>GALLERIES</a>
+                            <a href="/home" style={linkStyle}>PAINTINGS</a>
+                            <a href="/home" style={linkStyle}>DRAWINGS</a>
+                            <a href="/home" style={linkStyle}>SCULPTURES</a>
+                            <a href='/' style={linkStyle}>logout</a>
                         </div>
                     </header>
                 );

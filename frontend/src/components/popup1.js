@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Upload({isshow1, user}) {
+function Upload2({isshow1, user}) {
 
   const [exhibit, setExhibit] = useState("")
   const [gallery, setGallery] = useState("")
@@ -121,11 +121,11 @@ function Upload({isshow1, user}) {
       <br></br><label style={{color:"white"}}>Upload the poster: </label>
       <input type="file" name="art" onChange={handleChange} filename={file}
 
-      accept="image/*"></input>/><br/><br/>
+      accept="image/*"></input><br/><br/>
       <input type="submit"  style={{width:"100px"}}/>
       </div>
       <div style={{width:"250px",height:"250px",backgroundColor:"white",display:"flex",justifyContent:"center"}}>
-      <div ><img id="myart" src={file_disp}  width="100%" height="100%" alt="upload your artwork!" /></div><br/><br/>
+      <div ><img id="myart" src={file_disp}  width="100%" height="100%" alt="upload your poster!" /></div><br/><br/>
       </div>
       </form>
     </div>
@@ -134,4 +134,4 @@ function Upload({isshow1, user}) {
   )
 }
 
-export default Upload;
+export default Upload2;
