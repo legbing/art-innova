@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import img1 from './assets/home.jpg';
 
 function Form() {
   let [authMode, setAuthMode] = useState("signin")
@@ -24,20 +25,23 @@ function Form() {
      console.log(response)
      alert('user logged in succesfully!')
      //setUser((user) => response.data[0])
+     console.log(response);
      const user = response.data[0];
      console.log(user);
-     if(response.data[1] == "artist")
+     if(response.data[1] === "artist")
      {
        navigate('/artist/home', {state:{user}})
      }
      else if (response.data[1] == "customer") {
-       navigate('/home', {state:{user}})}
-    else if (response.data[1] == "Gallery owner") {
-        navigate('/gallery', {state:{user}})
-    }
+       navigate('/home', {state:{user}})
 
+     }
+     else if (response.data[1] == "Gallery owner") {
+      navigate('/gallery', {state:{user}})
+    }
    }).catch((err)=>{
     console.log(err)
+    alert("user login failed!")
    }
 )
 
@@ -58,15 +62,20 @@ function Form() {
      ).then((response)=>{
        console.log(response)
        alert('user signed up succesfully!')
+       setAuthMode("signin");
+
      }).catch((err)=>{
       console.log(err)
+      alert("user signup failed!")
      })
     e.preventDefault();
   }
   if (authMode === "signin") {
     return (
-      <div className="Auth-form-container">
-        <form className="Auth-form" onSubmit={login}>
+      <div>
+        <img style={{position:"fixed"}} src={img1} width='100%' height='100%' />
+      <div  className="Auth-form-container">
+        <form style={{top:"0",zIndex:"100"}} className="Auth-form" onSubmit={login}>
           <div className="Auth-form-content">
             <h3 className="Auth-form-title">Sign In</h3>
             <div className="text-center">
@@ -109,12 +118,15 @@ function Form() {
           </div>
         </form>
       </div>
+      </div>
     )
   }
 
   return (
+    <div>
+    <img style={{position:"fixed"}} src={img1} width='100%' height='100%' />
     <div className="Auth-form-container">
-      <form className="Auth-form" onSubmit={signup}>
+      <form style={{top:"0",zIndex:"1"}} className="Auth-form" onSubmit={signup}>
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign Up</h3>
           <div className="text-center">
@@ -163,6 +175,7 @@ function Form() {
           </div>
         </div>
       </form>
+    </div>
     </div>
   )
 }
