@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -64,6 +65,22 @@ def get_artist_art(request, user):
     serializer =ArtSerializer(data, context={'request': request}, many=True)
     #print("Data: ",serializer.data)
     return Response(serializer.data)
+
+@api_view(['GET'])
+def get_artwork_desc(request,user,title):
+    print('hello')
+    print(user)
+    print(title)
+    data = Work.objects.filter(title = title).filter(author=user)
+    print(data)
+    serializer =ArtSerializer(data, context={'request': request}, many=True)
+    print("Data: ",serializer.data)
+    return Response(serializer.data)
+
+@api_view(['DELETE'])
+def delete_art(request,user,title):
+    Work.objects.filter(title = title).filter(author=user).delete()
+    return Response(status=200)
 
 @api_view(['GET', 'POST'])
 def add_event(request):
